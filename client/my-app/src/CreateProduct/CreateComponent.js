@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Navbar, NavItem, Row, Input, Button, Icon } from 'react-materialize';
+import { Navbar, NavItem, Row, Input, Icon, Button } from 'react-materialize';
+// import { Button } from 'bootstrap';
 
 
 class CreateComponent extends Component {
@@ -16,10 +17,15 @@ class CreateComponent extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   handleSubmit(event){
     this.callApi();
+  }
+
+  goBack() {
+    this.props.history.push(`/read`);
   }
 
   handleChange(event){
@@ -41,6 +47,8 @@ class CreateComponent extends Component {
       }
     ).then(response => console.log(response))
     .catch(error => console.log(error));
+
+    this.goBack();
   };
 
   render() {
@@ -59,6 +67,7 @@ class CreateComponent extends Component {
           <div className="row">
             <div className="col s1">
               <Button waves='light' type="submit" onClick={this.handleSubmit}>Crear<Icon right>add</Icon></Button>
+              {/* <Button></Button> */}
             </div>
           </div>
         </div>

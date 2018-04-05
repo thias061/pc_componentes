@@ -5,9 +5,11 @@ import axios from 'axios';
 import { Switch, Route, Router } from 'react-router';
 import { Navbar, NavItem, Row, Input, Button, Icon } from 'react-materialize';
 import CreateComponent from './CreateProduct/CreateComponent';
+import StoreComponent from './Store/StoreComponent';
 import ReadComponent from './Products/ProductsComponent';
 import createBrowserHistory from 'history/createBrowserHistory'
 import ProductComponent from './ProductDetail/ProductDetailComponent';
+
 
 const history = createBrowserHistory();
 
@@ -17,6 +19,7 @@ const Root = () => (
     <Route path="/create" component={CreateComponent} />
     <Route path="/read" component={ReadComponent} />
     <Route path="/product/:productId" component={ProductComponent} />
+    <Route path="/store" component={StoreComponent} />
   </Switch>
 </Router>)
 
@@ -29,9 +32,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="row">
-          <Navbar className='Navbar' brand='Pc Componentes' center>
-            <NavItem href='/create'>Crear</NavItem>
-            <NavItem href='/read'>Consultar</NavItem>
+          <Navbar className='Navbar' brand='PcComponentes' left>
+            <NavItem href='/create'>Crear un producto</NavItem>
+            <NavItem href='/read'>Lista de productos</NavItem>
+            <NavItem href='/store'>Tiendas</NavItem>
           </Navbar>
         </div>
         <div className="row">
