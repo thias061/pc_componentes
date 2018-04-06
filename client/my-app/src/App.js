@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="row">
-          <Navbar className='Navbar' brand='PcComponentes' left>
+          <Navbar className='Navbar' left>
             <NavItem href='/create'>Crear un producto</NavItem>
             <NavItem href='/read'>Lista de productos</NavItem>
             <NavItem href='/store'>Tiendas</NavItem>

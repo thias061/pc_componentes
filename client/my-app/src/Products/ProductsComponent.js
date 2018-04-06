@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
+import { Input, Row } from 'react-materialize';
 
 
 class ProductsComponent extends Component {
@@ -10,6 +11,8 @@ class ProductsComponent extends Component {
 
     this.state = {
       products: [],
+      filteredProducts: [],
+      // searchValue: ''
     };
 
     this.handleRow = this.handleRow.bind(this);
@@ -19,9 +22,32 @@ class ProductsComponent extends Component {
     this.props.history.push(`/product/${productid}`);
   }
 
+  handleSearch(e) {
+
+    var searchValue = e.target.value;
+
+    if (searchValue.length < 3) {
+      this.setState({
+        filteredProducts: this.state.products
+      });
+    } else {
+      this.setState(
+        {
+          filteredProducts: this.state.products
+            .filter(product => product.name.toLowerCase()
+              .indexOf(searchValue.toLowerCase()) !== -1)
+        }
+      );
+    }
+  }
+
   componentDidMount() {
     this.callApi()
-      .then(response => this.setState({ products: response.products }))
+      .then(response => this.setState(
+        {
+          products: response.products,
+          filteredProducts: response.products
+        }))
       .catch(err => console.log(err));
   }
 
@@ -36,7 +62,7 @@ class ProductsComponent extends Component {
   };
 
   render() {
-    const data = this.state.products;
+    const data = this.state.filteredProducts;
 
     const columns = [
       {
@@ -59,19 +85,25 @@ class ProductsComponent extends Component {
     ]
     return (
       <div className="read">
-        <ReactTable
-          getTdProps={(state, rowInfo, column, instance) => {
-            return {
-              onClick: (e, handleOriginal) => {
-                if (handleOriginal) {
+        <Row>
+          <Input placeholder="Buscar un producto" name="name" s={6} label="Producto"
+            // value={this.state.searchValue}
+            onChange={this.handleSearch.bind(this)}
+          />
+        </Row>
+        <Row>
+          <ReactTable
+            getTdProps={(state, rowInfo, column, instance) => {
+              return {
+                onClick: (e) => {
                   this.handleRow(rowInfo.row._id);
                 }
               }
             }
-          }
-          }
-          data={data}
-          columns={columns} />
+            }
+            data={data}
+            columns={columns} />
+        </Row>
       </div>
     );
   }

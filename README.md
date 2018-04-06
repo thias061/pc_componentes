@@ -1,6 +1,7 @@
 # Pc Componentes
 
-## Desarrollo
+## DEV ReactJs + Node.js + Express + MongoDB 
 
-Se trata de una prueba de consumo de una RestAPI implementada a traves de Nodejs + Express + Mongodb, por una aplicacion en ReactJs
+This is a simple CRUD Aplication using RESTapi with Node and ReactJs
 
+You can create products read and delete
