@@ -2,7 +2,12 @@
 
 ## DEV ReactJs + Node.js + Express + MongoDB 
 
-This is a simple CRUD Aplication using RESTapi with Node and ReactJs
+This is a simple CRUD Aplication using RESTapi with Node for the endpoint and ReactJs + Materialize CSS for the interface
+
+https://react-materialize.github.io/#/
+
+https://react-table.js.org/#/story/readme
+
 
 You can create products read delete and update
 
