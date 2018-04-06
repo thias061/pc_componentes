@@ -9,6 +9,7 @@ import StoreComponent from './Store/StoreComponent';
 import ReadComponent from './Products/ProductsComponent';
 import createBrowserHistory from 'history/createBrowserHistory'
 import ProductComponent from './ProductDetail/ProductDetailComponent';
+import UpdateComponent from './UpdateProduct/UpdateComponent';
 
 
 const history = createBrowserHistory();
@@ -18,6 +19,7 @@ const Root = () => (
   <Switch>
     <Route path="/create" component={CreateComponent} />
     <Route path="/read" component={ReadComponent} />
+    <Route path="/update/:productId" component={UpdateComponent} />
     <Route path="/product/:productId" component={ProductComponent} />
     <Route path="/store" component={StoreComponent} />
   </Switch>

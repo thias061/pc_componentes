@@ -18,6 +18,7 @@ class ProductDetailComponent extends Component {
 
     this.deleteProduct = this.deleteProduct.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.goToUpdate = this.goToUpdate.bind(this);
   }
   
   componentDidMount(){
@@ -39,6 +40,11 @@ class ProductDetailComponent extends Component {
     this.props.history.push(`/read`);
   }
 
+  goToUpdate(){
+    var productId = this.state.id;
+    this.props.history.push(`/update/${productId}`);
+
+  }
   async getProductById(id) {
 
     const jsonPromise = await fetch(`/api/product/${id}`);
@@ -63,6 +69,7 @@ class ProductDetailComponent extends Component {
           <h3>{this.state.name}</h3>
           <p>Categoria : {this.state.category}</p>
           <p>Precio : {this.state.price}</p>
+          <Button onClick={this.goToUpdate}>Editar</Button><br/><br/>
           <Button onClick={this.deleteProduct}>Supprimir</Button>
       </div>
     );
